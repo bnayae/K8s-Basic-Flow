@@ -1,0 +1,39 @@
+#namespaces defined in separate yaml
+#apiVersion: v1
+#kind: Namespace
+#metadata:
+#  name: dev
+#---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bnaya-gcp-hello-node
+  namespace: dev
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: gcp-hello-node
+    spec:
+      containers:
+        - name: hello-node
+          image: 'bnaya/tmp-test:v2'
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gcp-hello-node-service
+  namespace: dev
+  labels:
+    name: gcp-hello-node-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: gcp-hello-node
+  type: LoadBalancer

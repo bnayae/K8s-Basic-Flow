@@ -1,0 +1,22 @@
+- Create the micro-service: (node-hello-world-server.js)
+- Test local service: (node node-hello-world-server.js)
+
+- Add Dockerfile
+- Build Docker: docker build . -t {docker-hub-user-name}/{image-name}:{tag}
+- Log-in to docker-hub: docker login
+- Push to docker-hub: docker push {docker-hub-user-name}/{image-name}:{tag}
+- Test Docker: docker run -d -p 8099:8080 {docker-hub-user-name}/{image-name}:{tag}
+    example: docker run -d -p 8099:8080 bnaya/tmp-test:v2
+
+- Check the kubectl context: kubectl config get-contexts (the active context mark with *)
+- Set active context: kubectl config use-context docker-for-desktop
+- Check the running pods: kubectl get pods -n {namespace}
+                          kubectl get pods --all-namespaces
+
+- Add yaml file: http://static.brandonpotter.com/kubernetes/DeploymentBuilder.html
+  Local services: NodePort
+  GCP services: Loadbalancer  
+
+- Kubectl apply -f {file.yaml}
+- Check the running pods: kubectl get pods -n {namespace}
+- Check the running services: kubectl get services -n {namespace}
