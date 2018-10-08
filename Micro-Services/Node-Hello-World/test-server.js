@@ -4,7 +4,7 @@ var handleRequest = function(request, response) {
   console.log('Received request for URL: ' + request.url);
   response.writeHead(200);
   var d = new Date();
-  response.end('Hello World!' + d.toISOString());
+  response.end('Hello World! - ci' + d.toISOString());
 };
 var www = http.createServer(handleRequest);
 www.listen(8080);
