@@ -20,3 +20,9 @@
 - Kubectl apply -f {file.yaml}
 - Check the running pods: kubectl get pods -n {namespace}
 - Check the running services: kubectl get services -n {namespace}
+
+Continue from here:
+- CI
+https://medium.com/@tomershaiman/building-a-ci-cd-pipeline-on-azure-kubernetes-service-aks-part-1-5d2b3a7968ca
+https://medium.com/@tomershaiman/building-a-ci-cd-pipeline-on-azure-kubernetes-service-aks-part-2-1f43a922088c
+https://medium.com/@tomershaiman/building-a-ci-cd-pipeline-on-azure-kubernetes-service-aks-part-3-fe8a6592a5fd
