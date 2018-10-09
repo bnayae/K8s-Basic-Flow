@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:8
 EXPOSE 8080
 COPY test-server.js .
 ENTRYPOINT ["node", "test-server.js"]

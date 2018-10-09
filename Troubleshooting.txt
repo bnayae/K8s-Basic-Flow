@@ -46,6 +46,9 @@ DOCKER:
 - docker rmi {image-name:tag}
 
 
+- docker login --username {user-name} --password {password} {repository-url}
+- docker logout [repository-url]
+
   ## format
   .ID	Container ID
   .Image	Image ID

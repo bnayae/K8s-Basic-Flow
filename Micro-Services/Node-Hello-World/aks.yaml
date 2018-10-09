@@ -1,0 +1,43 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: aks-hello-node
+  namespace: dev
+  labels:
+    app: hello
+spec:
+  selector:
+    matchLabels:
+      app: aks-hello-node
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: aks-hello-node
+    spec:
+      containers:
+      - name: hello
+        image: aks2repo.azurecr.io/bnayae/k8s-basic-flow
+        resources:
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        ports:
+        - containerPort: 8080
+          name: nodejs-port
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-node
+  namespace: dev
+  labels:
+    name: hello-node
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: aks-hello-node
+  type: LoadBalancer
